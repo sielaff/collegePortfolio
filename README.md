@@ -8,8 +8,6 @@ CS 302 (Data Structures) taken in Spr 2017
 
 CS 458 (Intro to Data Mining) taken in Spr 2018
 
-MATH 365 (Computational Linear Algebra) taken in Spr 2018
-
 CS 769 (Advanced Database Systems) taken in Spr 2019
 
 
