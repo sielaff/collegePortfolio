@@ -1,5 +1,5 @@
 def find_max(list):
-    "A function to find the max of a given list [essentiall obsolete with max(list)]"
+    "A function to find the max of a given list [essentially obsolete with max(list)]"
     max = 0
     index = 0
     return_list = []
