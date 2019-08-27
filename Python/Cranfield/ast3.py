@@ -3,6 +3,7 @@
 # stem and remove stopwords from queries
 # treat 'AND 'OR 'NOT' and () as special operators
 # order of precedence: () -> NOT -> AND, OR
+# this is UNFINISHED
 
 import json
 import sys
