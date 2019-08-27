@@ -1,0 +1,126 @@
+#!/bin/bash
+#  CS 302, assignment #10 test script.
+
+# ---------------------------------------------------------
+#  Initial checks.
+#	Ensure executable file exists.
+#	Verify availability of testing support files.
+
+if [ -z $1 ]; then
+	echo "Error, must provide executable file name."
+	exit
+fi
+
+if [ ! -e $1 ] || [ ! -x $1 ]; then
+	echo "Error, unable to find $1 executable file."
+	exit
+fi
+
+if [ ! -e graph1.txt ]; then
+	echo "Error, unable to find verification files."
+	exit
+fi
+
+# ---------------------------------------------------------
+# Define script variables and function
+
+bolded=`tput bold`
+normal=`tput sgr0`
+
+pause() {
+	if [ "$1" = "skip" ]; then
+		echo
+	else
+		echo
+		echo -n "Press return to continue"
+		read
+		clear
+	fi
+}
+
+# ---------------------------------------------------------
+#  Begin testing...
+#
+clear
+echo "${bolded}CS 302 Assignment #9 Test Script${normal}"
+echo
+#
+# ---------------------------------------------------------
+#  Basic tests
+#
+echo ./$1 -t  >testOut.txt
+./$1 -t > testOut.txt
+
+if `diff testOut.txt mstrTest.txt >/dev/null` ; then
+	echo "Graph Object Test Successful"
+else
+	diff testOut.txt mstrTest.txt
+fi
+echo
+#
+# -----
+
+echo "Execution Testing..."
+echo
+
+for iter in {1..3..1}
+do
+	echo "./"$1" -gf graph$iter.txt -sn 0 -dn 4 -sm >tmp$iter.txt"
+	./$1 -gf graph$iter.txt -sn 0 -dn 4 -sm >tmp$iter.txt
+
+	if `diff tmp$iter.txt mstr$iter.txt >/dev/null`; then
+		echo "Test $iter Successful"
+	else
+		diff tmp$iter.txt mstr$iter.txt
+	fi
+
+	echo
+done
+
+for iter in {4..6..1}
+do
+	echo "./"$1" -gf graph$iter.txt -sn 5 -dn 4 >tmp$iter.txt"
+	./$1 -gf graph$iter.txt -sn 5 -dn 4 >tmp$iter.txt
+
+	if `diff tmp$iter.txt mstr$iter.txt >/dev/null`; then
+		echo "Test $iter Successful"
+	else
+		diff tmp$iter.txt mstr$iter.txt
+	fi
+
+	echo
+done
+
+for iter in {4..6..1}
+do
+	echo "./"$1" -gf graph$iter.txt -sn 5 -dn 17 >tmp$((iter+3)).txt"
+	./$1 -gf graph$iter.txt -sn 5 -dn 17 >tmp$((iter+3)).txt
+
+	if `diff tmp$((iter+3)).txt mstr$((iter+3)).txt >/dev/null`; then
+		echo "Test $((iter+3)) Successful"
+	else
+		diff tmp$((iter+3)).txt mstr$((iter+3)).txt
+	fi
+
+	echo
+done
+
+for iter in {4..6..1}
+do
+	echo "./"$1" -gf graph$iter.txt -sn 5 -dn 47 >tmp$((iter+6)).txt"
+	./$1 -gf graph$iter.txt -sn 5 -dn 47 >tmp$((iter+6)).txt
+
+	if `diff tmp$((iter+6)).txt mstr$((iter+6)).txt >/dev/null`; then
+		echo "Test $((iter+6)) Successful"
+	else
+		diff tmp$((iter+6)).txt mstr$((iter+6)).txt
+	fi
+
+	echo
+done
+
+# ---------------------------------------------------------
+#  Done, end script
+#
+echo "Test Script Done."
+

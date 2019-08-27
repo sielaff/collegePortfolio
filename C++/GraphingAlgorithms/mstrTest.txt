@@ -1,0 +1,27 @@
+*****************************************************************
+[1mCS 302 - Assignment #10
+Graph Algorithms[0m
+
+=================================================================
+Error testing: 
+
+graphAlgorithms: Error, invalid graph size.
+graphAlgorithms: Error, invalid graph size.
+newGraph: Error, invalid graph size.
+newGraph: Error, invalid graph size.
+addEdge: error, invalid vertex.
+addEdge: error, invalid vertex.
+addEdge: error, invalid vertex.
+addEdge: error, vertex to and from can not be the same.
+
+topoSort: Error, no graph data.
+
+printMatrix: Error, no graph data.
+
+dijkstra: Error, no graph data.
+
+dijkstra: error, invalid source.
+
+
+*****************************************************************
+Game Over, thank you for playing.
